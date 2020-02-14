@@ -15,6 +15,8 @@ namespace Force3D
 
         public static Vector3 CameraPosition = new Vector3(0, 0, -3);
 
+        public static int FramesSinceStart = 0;
+
         protected override void OnLoad(EventArgs e)
         {//runs when the game is first loaded
             base.OnLoad(e);
@@ -58,7 +60,12 @@ namespace Force3D
         static void GameLogic()
         {
             //the frame logic for all elements
-            modelview = Matrix4.LookAt(CameraPosition, CameraPosition + new Vector3(0, 0, 1), Vector3.UnitY);
+            FramesSinceStart++; //Increment the currect frame the game is on
+
+            CameraPosition = new Vector3((float)Math.Sin(FramesSinceStart / (2 * Math.PI)) * 3, 1, (float)Math.Cos(FramesSinceStart / (2 * Math.PI)) * 3); //move the camera in a circle
+
+
+            modelview = Matrix4.LookAt(CameraPosition, Vector3.Zero, Vector3.UnitY); //set the position and rotation of the camera
             GL.MatrixMode(MatrixMode.Modelview);//change to rendering 3d models
             GL.LoadMatrix(ref modelview);//load the matrix describing the camera
         }
