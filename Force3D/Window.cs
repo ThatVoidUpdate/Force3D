@@ -5,9 +5,15 @@ using System.Drawing;
 
 namespace Force3D
 {
-    class Window : OpenTK.GameWindow
+    class Window : GameWindow
     {
         double fov = Math.PI / 4;
+
+        public static GameObject cube = new GameObject(GameObject.Primitive.Cube);
+
+        public static Matrix4 modelview = Matrix4.Identity;
+
+        public static Vector3 CameraPosition = new Vector3(0, 0, -3);
 
         protected override void OnLoad(EventArgs e)
         {//runs when the game is first loaded
@@ -52,11 +58,15 @@ namespace Force3D
         static void GameLogic()
         {
             //the frame logic for all elements
+            modelview = Matrix4.LookAt(CameraPosition, CameraPosition + new Vector3(0, 0, 1), Vector3.UnitY);
+            GL.MatrixMode(MatrixMode.Modelview);//change to rendering 3d models
+            GL.LoadMatrix(ref modelview);//load the matrix describing the camera
         }
 
         static void GameRender()
         {
             //rendering all game elements
+            cube.Draw();
         }
 
     }
