@@ -10,6 +10,8 @@ namespace Force3D
     {
         static void Main(string[] args)
         {
+            new Window().Run(60);
         }
+
     }
 }
