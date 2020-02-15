@@ -22,7 +22,7 @@ namespace Force3D
         /// <param name="_p2">Point 2 of the tri</param>
         /// <param name="_p3">Point 3 of the tri</param>
         public Tri(Vector3 _p1, Vector3 _p2, Vector3 _p3)
-        {//if no colours are passed in the constructor, then just use random ones,and set the oints accordingly
+        {//if no colours are passed in the constructor, then just use black, and set the points accordingly
             p1 = _p1;
             p2 = _p2;
             p3 = _p3;
@@ -51,7 +51,7 @@ namespace Force3D
         /// </summary>
         /// <param name="vector">Amount to translate by in each direction</param>
         public void Translate(Vector3 vector)
-        {//add the translation to every point for translateion
+        {//add the translation to every point for translation
             p1 += vector;
             p2 += vector;
             p3 += vector;
@@ -63,15 +63,15 @@ namespace Force3D
         /// <param name="vector">Amount to scale by in each direction</param>
         public void Scale(Vector3 vector)
         {//to scale, multiply every point by the corresponding point fo the scaling vector
-            p1.X = p1.X * vector.X;
-            p1.Y = p1.Y * vector.Y;
-            p1.Z = p1.Z * vector.Z;
-            p2.X = p2.X * vector.X;
-            p2.Y = p2.Y * vector.Y;
-            p2.Z = p2.Z * vector.Z;
-            p3.X = p3.X * vector.X;
-            p3.Y = p3.Y * vector.Y;
-            p3.Z = p3.Z * vector.Z;
+            p1.X *= vector.X;
+            p1.Y *= vector.Y;
+            p1.Z *= vector.Z;
+            p2.X *= vector.X;
+            p2.Y *= vector.Y;
+            p2.Z *= vector.Z;
+            p3.X *= vector.X;
+            p3.Y *= vector.Y;
+            p3.Z *= vector.Z;
         }
 
         /// <summary>

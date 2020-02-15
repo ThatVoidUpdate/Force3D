@@ -46,7 +46,105 @@ namespace Force3D
                                                             new Tri(new Vector3(0.5f, -0.5f, 0.5f), new Vector3(0.5f, -0.5f, -0.5f), new Vector3(-0.5f, -0.5f, -0.5f))};
                     break;
                 case Primitive.Cylinder:
-                    tris = new List<Tri>() { new Tri(new Vector3(0.47553f, -0.15451f, 0.5f), new Vector3(0.47553f, 0.15451f, 0.5f), new Vector3(0.47553f, -0.15451f, -0.5f)) };
+                    tris = new List<Tri>()
+                    {
+                        new Tri(new Vector3(0.475525f, 0.500001f, 0.154503f),
+                            new Vector3(0.29389f, -0.499999f, 0.404503f),
+                            new Vector3(0.475525f, -0.499999f, 0.154503f)),
+                        new Tri(new Vector3(-0.475531f, -0.499999f, 0.154503f),
+                            new Vector3(-0.475531f, -0.499999f, -0.154514f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-3E-06f, 0.500001f, 0.499995f),
+                            new Vector3(-0.293896f, 0.500001f, 0.404503f),
+                            new Vector3(-0.293896f, -0.499999f, 0.404503f)),
+                        new Tri(new Vector3(0.475525f, 0.500001f, -0.154514f),
+                            new Vector3(0.475525f, -0.499999f, 0.154503f),
+                            new Vector3(0.475525f, -0.499999f, -0.154514f)),
+                        new Tri(new Vector3(-0.475531f, -0.499999f, -0.154514f),
+                            new Vector3(-0.293895f, -0.499999f, -0.404514f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-0.293896f, 0.500001f, 0.404503f),
+                            new Vector3(-0.475531f, 0.500001f, 0.154503f),
+                            new Vector3(-0.475531f, -0.499999f, 0.154503f)),
+                        new Tri(new Vector3(0.29389f, 0.500001f, -0.404514f),
+                            new Vector3(0.475525f, -0.499999f, -0.154514f),
+                            new Vector3(0.29389f, -0.499999f, -0.404514f)),
+                        new Tri(new Vector3(-0.293895f, -0.499999f, -0.404514f),
+                            new Vector3(-3E-06f, -0.499999f, -0.500005f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-0.293895f, 0.500001f, -0.404514f),
+                            new Vector3(-3E-06f, 0.500001f, -0.500005f), new Vector3(-3E-06f, -0.499999f, -0.500005f)),
+                        new Tri(new Vector3(-3E-06f, 0.500001f, -0.500005f),
+                            new Vector3(0.29389f, -0.499999f, -0.404514f),
+                            new Vector3(-3E-06f, -0.499999f, -0.500005f)),
+                        new Tri(new Vector3(-3E-06f, -0.499999f, -0.500005f),
+                            new Vector3(0.29389f, -0.499999f, -0.404514f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-0.475531f, 0.500001f, -0.154514f),
+                            new Vector3(-0.293895f, 0.500001f, -0.404514f),
+                            new Vector3(-0.293895f, -0.499999f, -0.404514f)),
+                        new Tri(new Vector3(0.29389f, 0.500001f, 0.404503f), new Vector3(-3E-06f, 0.500001f, 0.499995f),
+                            new Vector3(-3E-06f, -0.499999f, 0.499995f)),
+                        new Tri(new Vector3(-0.293896f, -0.499999f, 0.404503f),
+                            new Vector3(-0.475531f, -0.499999f, 0.154503f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(0.29389f, 0.500001f, 0.404503f),
+                            new Vector3(-3E-06f, -0.499999f, 0.499995f), new Vector3(0.29389f, -0.499999f, 0.404503f)),
+                        new Tri(new Vector3(-3E-06f, 0.500001f, -0.500005f),
+                            new Vector3(0.29389f, 0.500001f, -0.404514f),
+                            new Vector3(0.29389f, -0.499999f, -0.404514f)),
+                        new Tri(new Vector3(-3E-06f, -0.499999f, 0.499995f),
+                            new Vector3(-0.293896f, -0.499999f, 0.404503f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-3E-06f, 0.500001f, 0.499995f),
+                            new Vector3(-0.293896f, -0.499999f, 0.404503f),
+                            new Vector3(-3E-06f, -0.499999f, 0.499995f)),
+                        new Tri(new Vector3(0.29389f, 0.500001f, -0.404514f),
+                            new Vector3(0.475525f, 0.500001f, -0.154514f),
+                            new Vector3(0.475525f, -0.499999f, -0.154514f)),
+                        new Tri(new Vector3(0.29389f, -0.499999f, 0.404503f),
+                            new Vector3(-3E-06f, -0.499999f, 0.499995f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-0.293896f, 0.500001f, 0.404503f),
+                            new Vector3(-0.475531f, -0.499999f, 0.154503f),
+                            new Vector3(-0.293896f, -0.499999f, 0.404503f)),
+                        new Tri(new Vector3(0.475525f, 0.500001f, -0.154514f),
+                            new Vector3(0.475525f, 0.500001f, 0.154503f),
+                            new Vector3(0.475525f, -0.499999f, 0.154503f)),
+                        new Tri(new Vector3(0.475525f, -0.499999f, 0.154503f),
+                            new Vector3(0.29389f, -0.499999f, 0.404503f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-0.475531f, 0.500001f, 0.154503f),
+                            new Vector3(-0.475531f, -0.499999f, -0.154514f),
+                            new Vector3(-0.475531f, -0.499999f, 0.154503f)),
+                        new Tri(new Vector3(0.475525f, 0.500001f, 0.154503f),
+                            new Vector3(0.29389f, 0.500001f, 0.404503f), new Vector3(0.29389f, -0.499999f, 0.404503f)),
+                        new Tri(new Vector3(0.29389f, 0.500001f, 0.404503f),
+                            new Vector3(0.475525f, 0.500001f, 0.154503f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-0.475531f, 0.500001f, -0.154514f),
+                            new Vector3(-0.293895f, -0.499999f, -0.404514f),
+                            new Vector3(-0.475531f, -0.499999f, -0.154514f)),
+                        new Tri(new Vector3(-0.475531f, 0.500001f, 0.154503f),
+                            new Vector3(-0.475531f, 0.500001f, -0.154514f),
+                            new Vector3(-0.475531f, -0.499999f, -0.154514f)),
+                        new Tri(new Vector3(0.29389f, -0.499999f, -0.404514f),
+                            new Vector3(0.475525f, -0.499999f, -0.154514f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(-0.293895f, 0.500001f, -0.404514f),
+                            new Vector3(-3E-06f, -0.499999f, -0.500005f),
+                            new Vector3(-0.293895f, -0.499999f, -0.404514f)),
+                        new Tri(new Vector3(0.475525f, -0.499999f, -0.154514f),
+                            new Vector3(0.475525f, -0.499999f, 0.154503f), new Vector3(-3E-06f, -0.499999f, -5E-06f)),
+                        new Tri(new Vector3(0.475525f, 0.500001f, 0.154503f),
+                            new Vector3(0.475525f, 0.500001f, -0.154514f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(0.475525f, 0.500001f, -0.154514f),
+                            new Vector3(0.29389f, 0.500001f, -0.404514f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(0.29389f, 0.500001f, -0.404514f),
+                            new Vector3(-3E-06f, 0.500001f, -0.500005f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-3E-06f, 0.500001f, -0.500005f),
+                            new Vector3(-0.293895f, 0.500001f, -0.404514f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-0.293895f, 0.500001f, -0.404514f),
+                            new Vector3(-0.475531f, 0.500001f, -0.154514f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-0.475531f, 0.500001f, -0.154514f),
+                            new Vector3(-0.475531f, 0.500001f, 0.154503f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-0.475531f, 0.500001f, 0.154503f),
+                            new Vector3(-0.293896f, 0.500001f, 0.404503f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-0.293896f, 0.500001f, 0.404503f),
+                            new Vector3(-3E-06f, 0.500001f, 0.499995f), new Vector3(-3E-06f, 0.500001f, -5E-06f)),
+                        new Tri(new Vector3(-3E-06f, 0.500001f, 0.499995f), new Vector3(0.29389f, 0.500001f, 0.404503f),
+                            new Vector3(-3E-06f, 0.500001f, -5E-06f))
+                    };
                     break;
                 default:
                     break;
@@ -350,7 +448,7 @@ namespace Force3D
         /// <summary>
         /// Used to translate a gameobject by a vector3 (adds to current location)
         /// </summary>
-        /// <param name="vector">This will translate by (translation in x, translation in y, translation in )</param>
+        /// <param name="vector">This will translate by (translation in x, translation in y, translation in z)</param>
         public void Translate(Vector3 vector)
         {//to translate, just translate every triangle by that amount
             //pos += vector;
@@ -395,20 +493,6 @@ namespace Force3D
             }
         }
 
-
-        /// <summary>
-        /// not currently implemented, due to poor understanding of collision, but will soon be implemented
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool isColliding(GameObject other)
-        {//not yet properly implemented
-            throw new NotImplementedException();
-            return (tris.ToArray()[7].p1.X <= other.tris.ToArray()[3].p1.X && tris.ToArray()[3].p1.X >= other.tris.ToArray()[7].p1.X) &&
-                   (tris.ToArray()[1].p1.Y <= other.tris.ToArray()[1].p2.Y && tris.ToArray()[1].p1.Y >= other.tris.ToArray()[1].p2.Y) &&
-                   (tris.ToArray()[1].p1.Z <= other.tris.ToArray()[5].p1.Z && tris.ToArray()[5].p1.Z >= other.tris.ToArray()[1].p1.Z);
-        }
-
         /// <summary>
         /// Used to set the colour of a gameobject, which sets the face colours of all the tris under it
         /// </summary>
@@ -418,6 +502,14 @@ namespace Force3D
             foreach (Tri tri in tris)
             {
                 tri.setColour(colour);
+            }
+        }
+
+        public void RandomiseColour()
+        {
+            foreach (Tri tri in tris)
+            {
+                tri.setColour(Color.FromArgb(Window.rnd.Next(0, 256), Window.rnd.Next(0, 256), Window.rnd.Next(0, 256)));
             }
         }
     }

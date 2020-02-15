@@ -2,6 +2,7 @@
 using System;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace Force3D
 {
@@ -9,13 +10,15 @@ namespace Force3D
     {
         double fov = Math.PI / 4;
 
-        public static GameObject cube = new GameObject(GameObject.Primitive.Cube);
+        public static List<GameObject> GameObjects = new List<GameObject>();
 
         public static Matrix4 modelview = Matrix4.Identity;
 
         public static Vector3 CameraPosition = new Vector3(0, 0, -3);
 
         public static int FramesSinceStart = 0;
+
+        public static Random rnd = new Random();
 
         protected override void OnLoad(EventArgs e)
         {//runs when the game is first loaded
@@ -54,18 +57,27 @@ namespace Force3D
 
         static void GameInit()
         {
-            //initialise all variables etc.
+            for (int i = 0; i < 10; i++)
+            {
+                GameObjects.Add(new GameObject(GameObject.Primitive.Cylinder));
+                GameObjects[GameObjects.Count - 1].RandomiseColour();
+                GameObjects[GameObjects.Count - 1].pos = new Vector3(i % 3, 0, i / 3);
+            }
+
+            CameraPosition = new Vector3(-3, 1, -3);
+            modelview = Matrix4.LookAt(CameraPosition, Vector3.Zero, Vector3.UnitY); //set the position and rotation of the camera
         }
 
         static void GameLogic()
         {
-            //the frame logic for all elements
-            FramesSinceStart++; //Increment the currect frame the game is on
+            //the frame logic for all elements            
 
-            CameraPosition = new Vector3((float)Math.Sin(FramesSinceStart / (2 * Math.PI)) * 3, 1, (float)Math.Cos(FramesSinceStart / (2 * Math.PI)) * 3); //move the camera in a circle
+            foreach (GameObject gameObject in GameObjects)
+            {
+                gameObject.Rotate(new Vector3(0, 1, 0));
+            }
 
-
-            modelview = Matrix4.LookAt(CameraPosition, Vector3.Zero, Vector3.UnitY); //set the position and rotation of the camera
+            
             GL.MatrixMode(MatrixMode.Modelview);//change to rendering 3d models
             GL.LoadMatrix(ref modelview);//load the matrix describing the camera
         }
@@ -73,7 +85,10 @@ namespace Force3D
         static void GameRender()
         {
             //rendering all game elements
-            cube.Draw();
+            foreach (GameObject gameObject in GameObjects)
+            {
+                gameObject.Draw();
+            }
         }
 
     }
