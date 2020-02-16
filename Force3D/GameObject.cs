@@ -8,12 +8,19 @@ namespace Force3D
     /// <summary>
     /// An object in a game, holding a list of Triangles that can be drawn, scaled and translated all at the same time
     /// </summary>
-    class GameObject
+    public class GameObject
     {
 
         public Model model; //The model to be used when rendering etc.
         public Transformation transformation;
 
+        /// <summary>
+        /// A list of GameScripts that will be executed on this GameObject
+        /// </summary>
+        public List<GameScript> AttachedScripts = new List<GameScript>();
+
+
+        #region Ctors
         /// <summary>
         /// Creates a GameObject with a list of triangles as its geometry
         /// </summary>
@@ -34,6 +41,8 @@ namespace Force3D
             model = new Model(_tris);
             transformation = new Transformation(position, new Vector3(1,1,1), Vector3.Zero);
         }
+
+        #endregion Ctors
 
         /// <summary>
         /// Used to draw the gameobject in the scene
@@ -72,6 +81,38 @@ namespace Force3D
             foreach (Tri tri in model.Geometry)
             {
                 tri.Scale(vector);
+            }
+        }
+
+        /// <summary>
+        /// Registers a GameScript to be executed on this GameObject
+        /// </summary>
+        /// <param name="Script">The script to be attached</param>
+        public void RegisterScript(GameScript Script)
+        {
+            AttachedScripts.Add(Script);
+        }
+
+        /// <summary>
+        /// Called when the GameObject loads, triggers OnAwake functions in child GameScripts
+        /// </summary>
+        public void OnAwake()
+        {
+            foreach (GameScript script in AttachedScripts)
+            {
+                script.ParentObject = this;
+                script.OnAwake();
+            }
+        }
+
+        /// <summary>
+        /// Called every frame, triggers OnFrame functions in child GameScripts
+        /// </summary>
+        public void OnFrame()
+        {
+            foreach (GameScript script in AttachedScripts)
+            {
+                script.OnFrame();
             }
         }
 

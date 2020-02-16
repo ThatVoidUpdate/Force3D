@@ -7,7 +7,10 @@ using OpenTK;
 
 namespace Force3D
 {
-    class Transformation
+    /// <summary>
+    /// Stores a transformation of a GameObject
+    /// </summary>
+    public class Transformation
     {
         public Vector3 Position; //The position of the object
         public Vector3 Scale; //The scale of the object

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Force3D
 {
-    class Model
+    /// <summary>
+    /// Stores geometry used for a GameObject to render
+    /// </summary>
+    public class Model
     {
         /// <summary>
         /// A list of tris to express the geometry

@@ -10,7 +10,7 @@ namespace Force3D
     /// <summary>
     /// A single triangle that can be drawn, moved around and scaled. Used to make up basic geometry in a scene, usually
     /// </summary>
-    class Tri : IDisposable
+    public class Tri : IDisposable
     {//a single triangle to be rendered
         public Vector3 p1, p2, p3;//the positions of the points
         public Color p1c, p2c, p3c; //the colours of the points

@@ -10,8 +10,6 @@ namespace Force3D
     {
         double fov = Math.PI / 4;
 
-        public static List<GameObject> GameObjects = new List<GameObject>();
-
         public static Matrix4 modelview = Matrix4.Identity;
 
         public static Vector3 CameraPosition = new Vector3(0, 0, -3);
@@ -19,6 +17,8 @@ namespace Force3D
         public static int FramesSinceStart = 0;
 
         public static Random rnd = new Random();
+
+        public static List<GameObject> RegisteredObjects = new List<GameObject>();
 
         protected override void OnLoad(EventArgs e)
         {//runs when the game is first loaded
@@ -29,7 +29,7 @@ namespace Force3D
             GL.DepthMask(true);
             GL.DepthFunc(DepthFunction.Lequal);//ensuring that polygons draw in the correct order
 
-            GameInit(); //initialising the game            
+            GameInit(); //initialising the game
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
@@ -55,13 +55,18 @@ namespace Force3D
             GL.LoadMatrix(ref projection);//store the matrix
         }
 
+        public void RegisterGameObject(GameObject Object)
+        {
+            RegisteredObjects.Add(Object);
+        }
+
 
         static void GameInit()
         {
-            for (int i = 0; i < 10; i++)
+
+            foreach (GameObject Object in RegisteredObjects)
             {
-                GameObjects.Add(new GameObject(Primitives.Cylinder, new Vector3(i % 3, 0, i / 3)));
-                GameObjects[GameObjects.Count - 1].RandomiseColour();
+                Object.OnAwake();
             }
 
             CameraPosition = new Vector3(-3, 1, -3);
@@ -72,12 +77,10 @@ namespace Force3D
         {
             //the frame logic for all elements            
 
-            foreach (GameObject gameObject in GameObjects)
+            foreach (GameObject Object in RegisteredObjects)
             {
-                gameObject.Rotate(new Vector3(0, 1, 0));
-                gameObject.transformation.Position = new Vector3(gameObject.transformation.Position.X, (float)Math.Sin(Time.GameTime - gameObject.transformation.Position.Z / 10), gameObject.transformation.Position.Z);
+                Object.OnFrame();
             }
-
             
             GL.MatrixMode(MatrixMode.Modelview);//change to rendering 3d models
             GL.LoadMatrix(ref modelview);//load the matrix describing the camera
@@ -86,7 +89,7 @@ namespace Force3D
         static void GameRender()
         {
             //rendering all game elements
-            foreach (GameObject gameObject in GameObjects)
+            foreach (GameObject gameObject in RegisteredObjects)
             {
                 gameObject.Draw();
             }
