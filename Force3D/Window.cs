@@ -59,9 +59,8 @@ namespace Force3D
         {
             for (int i = 0; i < 10; i++)
             {
-                GameObjects.Add(new GameObject(GameObject.Primitive.Cylinder));
+                GameObjects.Add(new GameObject(Primitives.Cylinder, new Vector3(i % 3, 0, i / 3)));
                 GameObjects[GameObjects.Count - 1].RandomiseColour();
-                GameObjects[GameObjects.Count - 1].pos = new Vector3(i % 3, 0, i / 3);
             }
 
             CameraPosition = new Vector3(-3, 1, -3);

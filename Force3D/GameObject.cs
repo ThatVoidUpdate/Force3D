@@ -10,83 +10,28 @@ namespace Force3D
     /// </summary>
     class GameObject
     {
-        public enum Primitive { Cube, Cylinder };
         public Vector3 pos; //position of the gameobject
         public List<Tri> tris; //the array of triangles to be manipulated
 
         /// <summary>
-        /// If you just want to be a right pain, and use a new list of tris, previously unheard of by humankind, then this is the method for you. no primitives, no locations, just raw triangles
+        /// Creates a GameObject with a list of triangles as its geometry
         /// </summary>
-        /// <param name="_tris">The list of tris to use, you foolish idiot</param>
+        /// <param name="_tris">The list of tris to use</param>
         public GameObject(List<Tri> _tris)
         {//if the gameobject is instantiated with a list of tris, then just store them
             tris = _tris;
         }
 
         /// <summary>
-        /// Used to instantiate a gameobject if you just have a primitive type, and want to transform it later, as it will be instantiated at 0,0,0
+        /// Creates a GameObject with a list of triangles as its geometry, and a position to start at
         /// </summary>
-        /// <param name="type">The primitive type to use</param>
-        public GameObject(Primitive type)
-        {//if its initialised with a type, then set the tris accordingly
-            switch (type)
-            {
-                case Primitive.Cube:
-                    tris = Primitives.Cube;
-                    break;
-                case Primitive.Cylinder:
-                    tris = Primitives.Cylinder;
-                    break;
-                default:
-                    break;
-            }
-
+        /// <param name="_tris">The list of tris to use</param>
+        /// <param name="position">The position to place the gameobject at</param>
+        public GameObject(List<Tri> _tris, Vector3 position)
+        {
+            tris = _tris;
+            pos = position;
         }
-
-        /// <summary>
-        /// Used to instantiate a gameobject if you have a primitive type and a vector3 as the position
-        /// </summary>
-        /// <param name="type">The primitive type to use</param>
-        /// <param name="pos">The position as a vector3</param>
-        public GameObject(Primitive type, Vector3 pos)
-        {//if passed a type and a pos, then set the tris accordingly, and change the pos
-            switch (type)
-            {
-                case Primitive.Cube:
-                    tris = Primitives.Cube;
-                    break;
-                case Primitive.Cylinder:
-                    tris = Primitives.Cylinder;
-                    break;
-                default:
-                    break;
-            }
-            this.pos = pos;
-        }
-
-        /// <summary>
-        /// Used to instantiate a gameobject if you have a primitive type and the components of a vector3, but cant be bothered to instantiate a new vector3
-        /// </summary>
-        /// <param name="type">The primitive type to use</param>
-        /// <param name="x">The x position of this gameobject</param>
-        /// <param name="y">The y position of this gameobject</param>
-        /// <param name="z">The z position of this gameobject</param>
-        public GameObject(Primitive type, float x, float y, float z)
-        {//if passed a type and the components of a vector3, then init the triangles accordingly, and set the position
-            switch (type)
-            {
-                case Primitive.Cube:
-                    tris = Primitives.Cube;
-                    break;
-                case Primitive.Cylinder:
-                    tris = Primitives.Cylinder;
-                    break;
-                default:
-                    break;
-            }
-            this.pos = new Vector3(x, y, z);
-        }
-
 
         /// <summary>
         /// Used to draw the gameobject in the scene
