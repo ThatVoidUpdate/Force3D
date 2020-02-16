@@ -36,6 +36,7 @@ namespace Force3D
         {//called every time the game wants to render a frame
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);//clear the screen
+            Time.OnFrame(e);
 
             Title = "FPS: " + 1 / e.Time;
 
@@ -74,6 +75,7 @@ namespace Force3D
             foreach (GameObject gameObject in GameObjects)
             {
                 gameObject.Rotate(new Vector3(0, 1, 0));
+                gameObject.transformation.Position = new Vector3(gameObject.transformation.Position.X, (float)Math.Sin(Time.GameTime - gameObject.transformation.Position.Z / 10), gameObject.transformation.Position.Z);
             }
 
             
