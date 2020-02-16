@@ -10,8 +10,9 @@ namespace Force3D
     /// </summary>
     class GameObject
     {
-        public Vector3 pos; //position of the gameobject
-        public List<Tri> tris; //the array of triangles to be manipulated
+        public Vector3 pos; //The position of the GameObject
+
+        public Model model; //The model to be used when rendering etc.
 
         /// <summary>
         /// Creates a GameObject with a list of triangles as its geometry
@@ -19,7 +20,7 @@ namespace Force3D
         /// <param name="_tris">The list of tris to use</param>
         public GameObject(List<Tri> _tris)
         {//if the gameobject is instantiated with a list of tris, then just store them
-            tris = _tris;
+            model = new Model(_tris);
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace Force3D
         /// <param name="position">The position to place the gameobject at</param>
         public GameObject(List<Tri> _tris, Vector3 position)
         {
-            tris = _tris;
+            model = new Model(_tris);
             pos = position;
         }
 
@@ -40,7 +41,7 @@ namespace Force3D
         {//to draw, translate the gameobject to the correct position, draw the triangles and translate back. 
          //This keeps the tri positions where they are meant to be, for easier manipulating
             Translate(pos);
-            foreach (Tri tri in tris)
+            foreach (Tri tri in model.Geometry)
             {
                 tri.Draw();
             }
@@ -55,7 +56,7 @@ namespace Force3D
         public void Translate(Vector3 vector)
         {//to translate, just translate every triangle by that amount
             //pos += vector;
-            foreach (Tri tri in tris)
+            foreach (Tri tri in model.Geometry)
             {
                 tri.Translate(vector);
             }
@@ -67,7 +68,7 @@ namespace Force3D
         /// <param name="vector">This will scale by (scale in x, scale in y, scale in z)</param>
         public void Scale(Vector3 vector)
         {//same for scaling
-            foreach (Tri tri in tris)
+            foreach (Tri tri in model.Geometry)
             {
                 tri.Scale(vector);
             }
@@ -88,7 +89,7 @@ namespace Force3D
                                            (float)(-Math.Sin(_rotation.Y)), (float)(Math.Cos(_rotation.Y) * Math.Sin(_rotation.X)), (float)(Math.Cos(_rotation.Y) * Math.Cos(_rotation.X)));
             //compute the rotation matrix
 
-            foreach (Tri tri in tris)
+            foreach (Tri tri in model.Geometry)
             {//pre-multiply each point of every triangle by the ration matrix
                 tri.p1 = rotation * tri.p1;
                 tri.p2 = rotation * tri.p2;
@@ -102,7 +103,7 @@ namespace Force3D
         /// <param name="colour">The colour to set the gameobject to</param>
         public void setColour(Color colour)
         {
-            foreach (Tri tri in tris)
+            foreach (Tri tri in model.Geometry)
             {
                 tri.setColour(colour);
             }
@@ -113,7 +114,7 @@ namespace Force3D
         /// </summary>
         public void RandomiseColour()
         {
-            foreach (Tri tri in tris)
+            foreach (Tri tri in model.Geometry)
             {
                 tri.setColour(Color.FromArgb(Window.rnd.Next(0, 256), Window.rnd.Next(0, 256), Window.rnd.Next(0, 256)));
             }
