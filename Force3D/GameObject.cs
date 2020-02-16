@@ -10,17 +10,18 @@ namespace Force3D
     /// </summary>
     class GameObject
     {
-        public Vector3 pos; //The position of the GameObject
 
         public Model model; //The model to be used when rendering etc.
+        public Transformation transformation;
 
         /// <summary>
         /// Creates a GameObject with a list of triangles as its geometry
         /// </summary>
         /// <param name="_tris">The list of tris to use</param>
         public GameObject(List<Tri> _tris)
-        {//if the gameobject is instantiated with a list of tris, then just store them
+        {//If the gameobject is instantiated with a list of tris, then just store them
             model = new Model(_tris);
+            transformation = new Transformation();
         }
 
         /// <summary>
@@ -31,21 +32,21 @@ namespace Force3D
         public GameObject(List<Tri> _tris, Vector3 position)
         {
             model = new Model(_tris);
-            pos = position;
+            transformation = new Transformation(position, new Vector3(1,1,1), Vector3.Zero);
         }
 
         /// <summary>
         /// Used to draw the gameobject in the scene
         /// </summary>
         public void Draw()
-        {//to draw, translate the gameobject to the correct position, draw the triangles and translate back. 
+        {//To draw, translate the gameobject to the correct position, draw the triangles and translate back. 
          //This keeps the tri positions where they are meant to be, for easier manipulating
-            Translate(pos);
             foreach (Tri tri in model.Geometry)
             {
+                tri.Translate(transformation.Position);
                 tri.Draw();
+                tri.Translate(-transformation.Position);
             }
-            Translate(-pos);
         }
 
 
@@ -55,7 +56,7 @@ namespace Force3D
         /// <param name="vector">This will translate by (translation in x, translation in y, translation in z)</param>
         public void Translate(Vector3 vector)
         {//to translate, just translate every triangle by that amount
-            //pos += vector;
+            transformation.Position += vector;
             foreach (Tri tri in model.Geometry)
             {
                 tri.Translate(vector);
