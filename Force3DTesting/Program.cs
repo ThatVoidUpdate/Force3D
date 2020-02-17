@@ -31,8 +31,8 @@ namespace Force3DTesting
         /// </summary>
         public override void OnFrame()
         {
-            ParentObject.Rotate(new Vector3(1, 1, 1));
-            ParentObject.transformation.Position = new Vector3(ParentObject.transformation.Position.X, (float)Math.Abs(Math.Sin(Time.GameTime)), ParentObject.transformation.Position.Z);//Move the gameobject up and down
+            ParentObject.transformation.Rotate(new Vector3(1, 1, 1));
+            ParentObject.transformation.position = new Vector3(ParentObject.transformation.position.X, (float)Math.Abs(Math.Sin(Time.GameTime)), ParentObject.transformation.position.Z);//Move the gameobject up and down
             i++;
             i %= ParentObject.model.Geometry.Count;
             ParentObject.model.Geometry[i].setColour(Color.FromArgb(Window.rnd.Next(0, 255), Window.rnd.Next(0, 255), Window.rnd.Next(0, 255)));
