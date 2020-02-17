@@ -10,7 +10,14 @@ namespace Force3D
     /// </summary>
     public class GameObject
     {
-        public Model model; //The model to be used when rendering etc.
+        /// <summary>
+        /// The model to render when drawing the gameobject
+        /// </summary>
+        public Model model;
+
+        /// <summary>
+        /// The transformation to apply to this GameObject
+        /// </summary>
         public Transformation transformation;
 
         /// <summary>
@@ -26,7 +33,7 @@ namespace Force3D
         /// <param name="_tris">The list of tris to use</param>
         public GameObject(List<Tri> _tris)
         {//If the gameobject is instantiated with a list of tris, then just store them
-            model = new Model(_tris);
+            model = new Model(_tris.ConvertAll(tri => new Tri(tri.p1, tri.p2, tri.p3)));
             transformation = new Transformation(this);
         }
 
@@ -37,7 +44,7 @@ namespace Force3D
         /// <param name="position">The position to place the gameobject at</param>
         public GameObject(List<Tri> _tris, Vector3 position)
         {
-            model = new Model(_tris);
+            model = new Model(_tris.ConvertAll(tri => new Tri(tri.p1, tri.p2, tri.p3)));
             transformation = new Transformation(this, position, new Vector3(1,1,1), Vector3.Zero);
         }
 
@@ -61,11 +68,11 @@ namespace Force3D
         /// Used to set the colour of a gameobject, which sets the face colours of all the tris under it
         /// </summary>
         /// <param name="colour">The colour to set the gameobject to</param>
-        public void setColour(Color colour)
+        public void SetColour(Color colour)
         {
             foreach (Tri tri in model.Geometry)
             {
-                tri.setColour(colour);
+                tri.SetColour(colour);
             }
         }
 
@@ -76,7 +83,7 @@ namespace Force3D
         {
             foreach (Tri tri in model.Geometry)
             {
-                tri.setColour(Color.FromArgb(Window.rnd.Next(0, 256), Window.rnd.Next(0, 256), Window.rnd.Next(0, 256)));
+                tri.SetColour(Color.FromArgb(Window.rnd.Next(0, 256), Window.rnd.Next(0, 256), Window.rnd.Next(0, 256)));
             }
         }
 
@@ -89,6 +96,7 @@ namespace Force3D
             AttachedScripts.Add(Script);
         }
 
+        #region GameScriptFunctions
         /// <summary>
         /// Called when the GameObject loads, triggers OnAwake functions in child GameScripts
         /// </summary>
@@ -96,7 +104,7 @@ namespace Force3D
         {
             foreach (GameScript script in AttachedScripts)
             {
-                script.ParentObject = this;
+                script.gameObject = this;
                 script.OnAwake();
             }
         }
@@ -111,6 +119,8 @@ namespace Force3D
                 script.OnFrame();
             }
         }
+
+        #endregion GameScriptFunctions
     }
 }
 

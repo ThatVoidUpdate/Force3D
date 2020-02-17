@@ -5,7 +5,7 @@
         /// <summary>
         /// The parent gameobject of this script
         /// </summary>
-        public GameObject ParentObject;
+        public GameObject gameObject;
 
         /// <summary>
         /// If this method is implemented in the child, it will be called as soon as the game starts up

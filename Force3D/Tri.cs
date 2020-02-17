@@ -12,7 +12,7 @@ namespace Force3D
     /// </summary>
     public class Tri : IDisposable
     {//a single triangle to be rendered
-        internal Vector3 p1, p2, p3;//the positions of the points
+        public Vector3 p1, p2, p3;//the positions of the points
         internal Color p1c, p2c, p3c; //the colours of the points
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Force3D
         /// Used to set the colour of the triangle
         /// </summary>
         /// <param name="colour">A c# color that the tri colour will be set to</param>
-        public void setColour(Color colour)
+        public void SetColour(Color colour)
         {//to set the colour of the tri, just set all point colours to that colour, opentk does the rest of the interpolation work by itself
             p1c = colour;
             p2c = colour;

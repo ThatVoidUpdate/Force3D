@@ -17,6 +17,7 @@ namespace Force3D
         /// <summary>
         /// Creates an identity transformation
         /// </summary>
+        /// <param name="_gameObject">The GameObject that this Transformation is attached to</param>
         public Transformation(GameObject _gameObject)
         {
             gameObject = _gameObject;
@@ -28,6 +29,7 @@ namespace Force3D
         /// <summary>
         /// Creates a transformation with the given parameters
         /// </summary>
+        /// <param name="_gameObject">The GameObject that this Transformation is attached to</param>
         /// <param name="_Position">The position for the object</param>
         /// <param name="_Scale">The scale for the gameobject</param>
         /// <param name="_Rotation">The rotation of the gameobject</param>

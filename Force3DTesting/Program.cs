@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Force3D;
 using OpenTK;
@@ -10,10 +11,17 @@ namespace Force3DTesting
         static void Main()
         {
             Window window = new Window();//Create a new window to render stuff in
-
-            GameObject TestObject = new GameObject(Primitives.Cube);//Create a new gameobject with a cylinder mesh
-            TestObject.RegisterScript(new ExampleGameScript());//Register a new GameScript to be attached onto this GameObject
-            window.RegisterGameObject(TestObject);//Register the GameObject with the renderer
+            GameObject[] cubes = new GameObject[9];
+            for (int i = 0; i < 9; i++)
+            {
+                cubes[i] = new GameObject(Primitives.Cube, new Vector3(i / 3, 0, i % 3));//Create a new gameobject with a cylinder mesh
+                cubes[i].RegisterScript(new ExampleGameScript());//Register a new GameScript to be attached onto this GameObject
+                window.RegisterGameObject(cubes[i]);//Register the GameObject with the renderer
+            }
+            GameObject Floor = new GameObject(Primitives.Cube, new Vector3(0, -1, 0));
+            Floor.transformation.Scale(new Vector3(10, 0.5f, 10));
+            Floor.RandomiseColour();
+            window.RegisterGameObject(Floor);
             window.Run(60);//Start rendering
         }
 
@@ -23,7 +31,7 @@ namespace Force3DTesting
         private int i;
         public override void OnAwake()
         {
-            ParentObject.RandomiseColour();
+            gameObject.RandomiseColour();
         }
 
         /// <summary>
@@ -31,11 +39,8 @@ namespace Force3DTesting
         /// </summary>
         public override void OnFrame()
         {
-            ParentObject.transformation.Rotate(new Vector3(1, 1, 1));
-            ParentObject.transformation.position = new Vector3(ParentObject.transformation.position.X, (float)Math.Abs(Math.Sin(Time.GameTime)), ParentObject.transformation.position.Z);//Move the gameobject up and down
-            i++;
-            i %= ParentObject.model.Geometry.Count;
-            ParentObject.model.Geometry[i].setColour(Color.FromArgb(Window.rnd.Next(0, 255), Window.rnd.Next(0, 255), Window.rnd.Next(0, 255)));
+            gameObject.transformation.Rotate(new Vector3(0,1,0));
+            gameObject.transformation.position = new Vector3(gameObject.transformation.position.X, (float)Math.Abs(Math.Sin(Time.GameTime - gameObject.transformation.position.Z / 5 - gameObject.transformation.position.X / 5)), gameObject.transformation.position.Z);//Move the gameobject up and down
         }
     }
 }
