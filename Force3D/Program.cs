@@ -9,7 +9,7 @@ namespace Force3D
         {
             Window window = new Window();//Create a new window to render stuff in
 
-            GameObject TestObject = new GameObject(Primitives.Cylinder);//Create a new gameobject with a cylinder mesh
+            GameObject TestObject = new GameObject(Primitives.Sphere);//Create a new gameobject with a cylinder mesh
             TestObject.RegisterScript(new ExampleGameScript());//Register a new GameScript to be attached onto this GameObject
             window.RegisterGameObject(TestObject);//Register the GameObject with the renderer
             window.Run(60);//Start rendering
@@ -28,10 +28,13 @@ namespace Force3D
         /// </summary>
         public override void OnFrame()
         {
-            ParentObject.Rotate(new Vector3(0, 1, 0));//Rotate the GameObject by 1 degree
-            ParentObject.transformation.Position = new Vector3(ParentObject.transformation.Position.X,
-                                                               (float)Math.Sin(Time.GameTime - ParentObject.transformation.Position.Z / 10),
-                                                               ParentObject.transformation.Position.Z);//Move the gameobject up and down
+            ParentObject.Rotate(new Vector3(1,1,1));//Rotate the GameObject by 1 degree
+            ParentObject.transformation.Position = new Vector3(ParentObject.transformation.Position.X, (float)Math.Abs(Math.Sin(Time.GameTime)), ParentObject.transformation.Position.Z);//Move the gameobject up and down
+
+            if (ParentObject.transformation.Position.Y < 0.01)
+            {
+                ParentObject.RandomiseColour();
+            }
         }
     }
 }
