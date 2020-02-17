@@ -14,11 +14,9 @@ namespace Force3D
 
         public static Vector3 CameraPosition = new Vector3(0, 0, -3);
 
-        public static int FramesSinceStart = 0;
-
         public static Random rnd = new Random();
 
-        public static List<GameObject> RegisteredObjects = new List<GameObject>();
+        private static List<GameObject> RegisteredObjects = new List<GameObject>();
 
         protected override void OnLoad(EventArgs e)
         {//runs when the game is first loaded
@@ -61,7 +59,7 @@ namespace Force3D
         }
 
 
-        static void GameInit()
+        protected void GameInit()
         {
 
             foreach (GameObject Object in RegisteredObjects)
@@ -73,7 +71,7 @@ namespace Force3D
             modelview = Matrix4.LookAt(CameraPosition, Vector3.Zero, Vector3.UnitY); //set the position and rotation of the camera
         }
 
-        static void GameLogic()
+        protected void GameLogic()
         {
             //the frame logic for all elements            
 
@@ -86,7 +84,7 @@ namespace Force3D
             GL.LoadMatrix(ref modelview);//load the matrix describing the camera
         }
 
-        static void GameRender()
+        protected void GameRender()
         {
             //rendering all game elements
             foreach (GameObject gameObject in RegisteredObjects)

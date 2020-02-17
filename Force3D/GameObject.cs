@@ -10,14 +10,13 @@ namespace Force3D
     /// </summary>
     public class GameObject
     {
-
         public Model model; //The model to be used when rendering etc.
         public Transformation transformation;
 
         /// <summary>
         /// A list of GameScripts that will be executed on this GameObject
         /// </summary>
-        public List<GameScript> AttachedScripts = new List<GameScript>();
+        private List<GameScript> AttachedScripts = new List<GameScript>();
 
 
         #region Ctors
