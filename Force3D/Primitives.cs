@@ -7,7 +7,7 @@ using OpenTK;
 
 namespace Force3D
 {
-    class Primitives
+    public class Primitives
     {
         /// <summary>
         /// List of triangles used to make up a unit cube

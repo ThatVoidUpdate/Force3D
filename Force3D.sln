@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Force3D", "Force3D\Force3D.csproj", "{C3616B67-40DE-4F13-92EA-861D3C8CBCD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Force3DTesting", "Force3DTesting\Force3DTesting.csproj", "{EAE2B087-DC15-425D-8083-0E325437E068}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C3616B67-40DE-4F13-92EA-861D3C8CBCD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3616B67-40DE-4F13-92EA-861D3C8CBCD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3616B67-40DE-4F13-92EA-861D3C8CBCD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE2B087-DC15-425D-8083-0E325437E068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE2B087-DC15-425D-8083-0E325437E068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE2B087-DC15-425D-8083-0E325437E068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE2B087-DC15-425D-8083-0E325437E068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

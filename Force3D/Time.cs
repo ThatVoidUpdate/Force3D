@@ -5,7 +5,7 @@ namespace Force3D
     /// <summary>
     /// Class used for time functions, such as monitoring time since the app was started, and length of the last frame in seconds
     /// </summary>
-    class Time
+    public class Time
     {
         /// <summary>
         /// Length of the last frame in seconds

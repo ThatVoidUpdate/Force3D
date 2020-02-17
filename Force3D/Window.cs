@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Force3D
 {
-    class Window : GameWindow
+    public class Window : GameWindow
     {
-        double fov = Math.PI / 4;
+        public double fov = Math.PI / 4;
 
         public static Matrix4 modelview = Matrix4.Identity;
 
