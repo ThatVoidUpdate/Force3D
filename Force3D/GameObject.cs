@@ -87,6 +87,7 @@ namespace Force3D
             }
         }
 
+        #region GameScriptFunctions
         /// <summary>
         /// Registers a GameScript to be executed on this GameObject
         /// </summary>
@@ -96,7 +97,6 @@ namespace Force3D
             AttachedScripts.Add(Script);
         }
 
-        #region GameScriptFunctions
         /// <summary>
         /// Called when the GameObject loads, triggers OnAwake functions in child GameScripts
         /// </summary>

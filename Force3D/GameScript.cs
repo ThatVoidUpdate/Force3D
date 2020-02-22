@@ -1,6 +1,24 @@
 ﻿namespace Force3D
 {
-    public abstract class GameScript
+    /// <summary>
+    /// The class to be used when adding custom behaviour to a GameObject
+    /// </summary>
+    /// <example>
+    /// 
+    /// class ExampleGameScript : GameScript
+    ///{
+    ///    public override void OnAwake()
+    ///    {
+    ///        gameObject.RandomiseColour();
+    ///    }
+    ///    
+    ///    public override void OnFrame()
+    ///    {
+    ///        gameObject.transformation.Rotate(new Vector3(0, 1, 0));
+    ///    }
+    ///}
+    /// </example>
+public abstract class GameScript
     {
         /// <summary>
         /// The parent gameobject of this script

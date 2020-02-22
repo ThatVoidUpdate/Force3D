@@ -8,10 +8,22 @@ namespace Force3D
     /// </summary>
     public class Transformation
     {
-        public Vector3 position; //The position of the object
-        public Vector3 scale; //The scale of the object
-        public Vector3 rotation; //The rotation of the object
+        /// <summary>
+        /// The position of the object
+        /// </summary>
+        public Vector3 position;
+        /// <summary>
+        /// The scale of the object
+        /// </summary>
+        public Vector3 scale;
+        /// <summary>
+        /// The rotation of the object
+        /// </summary>
+        public Vector3 rotation;
 
+        /// <summary>
+        /// The gameobject that this Transformaiton is attached to 
+        /// </summary>
         public GameObject gameObject;
 
         /// <summary>
@@ -83,7 +95,7 @@ namespace Force3D
             //compute the rotation matrix
 
             foreach (Tri tri in gameObject.model.Geometry)
-            {//pre-multiply each point of every triangle by the ration matrix
+            {//pre-multiply each point of every triangle by the rotation matrix
                 tri.p1 = rotation * tri.p1;
                 tri.p2 = rotation * tri.p2;
                 tri.p3 = rotation * tri.p3;

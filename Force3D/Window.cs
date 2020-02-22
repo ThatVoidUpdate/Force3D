@@ -8,35 +8,59 @@ namespace Force3D
 {
     public class Window : GameWindow
     {
+        /// <summary>
+        /// FOV of the camera in radians
+        /// </summary>
         public double fov = Math.PI / 4;
 
+        /// <summary>
+        /// The viweport matrix
+        /// </summary>
         public static Matrix4 modelview = Matrix4.Identity;
 
+        /// <summary>
+        /// The position of the camera
+        /// </summary>
         public static Vector3 CameraPosition = new Vector3(0, 0, -3);
 
+        /// <summary>
+        /// An instance of the random class. Will be moved to a new class in future
+        /// </summary>
         public static Random rnd = new Random();
 
+        /// <summary>
+        /// List of all the registered GameObjects in the scene to render, execute scripts on etc.
+        /// </summary>
         private static List<GameObject> RegisteredObjects = new List<GameObject>();
 
+        /// <summary>
+        /// Called as soon as the game is first loaded
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {//runs when the game is first loaded
-            base.OnLoad(e);
+            base.OnLoad(e);//Tell OpenTK to load a new window
+
             GL.ClearColor(Color.CornflowerBlue); //change the background colour that everything is drawn on top of
             GL.Enable(EnableCap.Texture2D);
-            GL.Enable(EnableCap.DepthTest);//enabling various opentk shenanigans
+            GL.Enable(EnableCap.DepthTest);//Sort polygons by distance when drawing
             GL.DepthMask(true);
-            GL.DepthFunc(DepthFunction.Lequal);//ensuring that polygons draw in the correct order
+            GL.DepthFunc(DepthFunction.Lequal);
 
             GameInit(); //initialising the game
         }
 
+        /// <summary>
+        /// Called every time a frame is rendered
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnRenderFrame(FrameEventArgs e)
         {//called every time the game wants to render a frame
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);//clear the screen
-            Time.OnFrame(e);
+            Time.OnFrame(e);//Tell the time class how long the frame lasted
 
-            Title = "FPS: " + 1 / e.Time;
+            Title = "FPS: " + 1 / e.Time;//Set the title of the window
 
             GameLogic();//perform all logic
             GameRender();//render the scene
@@ -44,6 +68,10 @@ namespace Force3D
             SwapBuffers();//send the data to the graphics card
         }
 
+        /// <summary>
+        /// Called whenever the window is resized
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnResize(EventArgs e)
         {//called whenever the game is resized
             base.OnResize(e);
@@ -53,12 +81,18 @@ namespace Force3D
             GL.LoadMatrix(ref projection);//store the matrix
         }
 
+        /// <summary>
+        /// Call to register a GameObject to be drawn, have scripts executed on it, etc.
+        /// </summary>
+        /// <param name="Object">The object to be registered</param>
         public void RegisterGameObject(GameObject Object)
         {
             RegisteredObjects.Add(Object);
         }
 
-
+        /// <summary>
+        /// Initialises the engine, calling all OnAwake functions, etc.
+        /// </summary>
         protected void GameInit()
         {
 
@@ -71,6 +105,9 @@ namespace Force3D
             modelview = Matrix4.LookAt(CameraPosition, Vector3.Zero, Vector3.UnitY); //set the position and rotation of the camera
         }
 
+        /// <summary>
+        /// Calls the OnFrame methods of all of the GameObjects
+        /// </summary>
         protected void GameLogic()
         {
             //the frame logic for all elements            
@@ -79,13 +116,16 @@ namespace Force3D
             {
                 Object.OnFrame();
             }
-            
-            GL.MatrixMode(MatrixMode.Modelview);//change to rendering 3d models
-            GL.LoadMatrix(ref modelview);//load the matrix describing the camera
         }
 
+        /// <summary>
+        /// Performs all rendering of GameObjects in the scene
+        /// </summary>
         protected void GameRender()
         {
+            GL.MatrixMode(MatrixMode.Modelview);//change to rendering 3d models
+            GL.LoadMatrix(ref modelview);//load the matrix describing the camera
+
             //rendering all game elements
             foreach (GameObject gameObject in RegisteredObjects)
             {

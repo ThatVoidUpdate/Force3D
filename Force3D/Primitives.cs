@@ -7,6 +7,9 @@ using OpenTK;
 
 namespace Force3D
 {
+    /// <summary>
+    /// Example lists of triangles that can be used for instantiating GameObjects
+    /// </summary>
     public class Primitives
     {
         /// <summary>
@@ -68,6 +71,10 @@ namespace Force3D
                                                     new Tri(new Vector3(-0.475531f, 0.500001f, 0.154503f),   new Vector3(-0.293896f, 0.500001f, 0.404503f),   new Vector3(-3E-06f, 0.500001f, -5E-06f))       ,
                                                     new Tri(new Vector3(-0.293896f, 0.500001f, 0.404503f),   new Vector3(-3E-06f, 0.500001f, 0.499995f),      new Vector3(-3E-06f, 0.500001f, -5E-06f))       ,
                                                     new Tri(new Vector3(-3E-06f, 0.500001f, 0.499995f),      new Vector3(0.29389f, 0.500001f, 0.404503f),     new Vector3(-3E-06f, 0.500001f, -5E-06f))       };
+
+        /// <summary>
+        /// List of triangles used to make a low-poly sphere
+        /// </summary>
         public static List<Tri> Sphere = new List<Tri>(){ new Tri(new Vector3(0f, -1f, 0f), new Vector3(0.425323f, -0.850654f, 0.309011f), new Vector3(-0.162456f, -0.850654f, 0.499995f)),
 new Tri(new Vector3(0.723607f, -0.44722f, 0.525725f), new Vector3(0.425323f, -0.850654f, 0.309011f), new Vector3(0.850648f, -0.525736f, 0f)),
 new Tri(new Vector3(0f, -1f, 0f), new Vector3(-0.162456f, -0.850654f, 0.499995f), new Vector3(-0.52573f, -0.850652f, 0f)),
